@@ -1,17 +1,18 @@
-(function () {
-  'use strict';
+(function() {
+    'use strict';
 
-  angular
-    .module('articles')
-    .controller('ArticlesController', ArticlesController);
+    angular
+        .module('articles')
+        .controller('ArticlesController', ArticlesController);
 
-  ArticlesController.$inject = ['$scope', 'articleResolve', 'Authentication'];
+    ArticlesController.$inject = ['$scope', 'articleResolve', 'Authentication', '$http'];
 
-  function ArticlesController($scope, article, Authentication) {
-    var vm = this;
+    function ArticlesController($scope, article, Authentication, $http) {
+        var vm = this;
 
-    vm.article = article;
-    vm.authentication = Authentication;
+        vm.article = article;
+        vm.authentication = Authentication;
 
-  }
+
+    }
 }());

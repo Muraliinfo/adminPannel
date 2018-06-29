@@ -1,15 +1,22 @@
-(function () {
-  'use strict';
+(function() {
+    'use strict';
 
-  angular
-    .module('articles')
-    .controller('ArticlesListController', ArticlesListController);
+    angular
+        .module('articles')
+        .controller('ArticlesListController', ArticlesListController);
 
-  ArticlesListController.$inject = ['ArticlesService'];
+    ArticlesListController.$inject = ['ArticlesService', '$http', '$scope'];
 
-  function ArticlesListController(ArticlesService) {
-    var vm = this;
+    function ArticlesListController(ArticlesService, $http, $scope) {
+        var vm = this;
 
-    vm.articles = ArticlesService.query();
-  }
+        vm.articles = ArticlesService.query();
+        $scope.checkClick = function() {
+            console.log('in')
+            $http.post('api/auth/newWay').success(function(res) {
+                $scope.checkVal = res;
+                console.log(res);
+            });
+        };
+    }
 }());
